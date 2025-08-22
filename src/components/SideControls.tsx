@@ -110,38 +110,38 @@ export default function Sidebar() {
                />
              </div>
 
-             {/* Secondary button controls - will be re-enabled after deployment */}
-             
-             <div>
-               <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Text</label>
-               <input
-                 className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                 value={config.hero.secondaryCtaText || ""}
-                 onChange={(e) =>
-                   setConfig((prev) => ({
-                     ...prev,
-                     hero: { ...prev.hero, secondaryCtaText: e.target.value },
-                   }))
-                 }
-                 placeholder="Learn More"
-               />
-             </div>
+            {/* Secondary button controls - will be re-enabled after deployment */}
 
-             <div>
-               <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Link</label>
-               <input
-                 className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                 value={config.hero.secondaryCtaLink || ""}
-                 onChange={(e) =>
-                   setConfig((prev) => ({
-                     ...prev,
-                     hero: { ...prev.hero, secondaryCtaLink: e.target.value },
-                   }))
-                 }
-                 placeholder="https://example.com/about"
-               />
-             </div>
-            
+<div>
+  <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Text</label>
+  <input
+    className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    value={config.hero.secondaryCtaText || ""}
+    onChange={(e) =>
+      setConfig((prev) => ({
+        ...prev,
+        hero: { ...prev.hero, secondaryCtaText: e.target.value },
+      }))
+    }
+    placeholder="Learn More"
+  />
+</div>
+
+<div>
+  <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Link</label>
+  <input
+    className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+    value={config.hero.secondaryCtaLink || ""}
+    onChange={(e) =>
+      setConfig((prev) => ({
+        ...prev,
+        hero: { ...prev.hero, secondaryCtaLink: e.target.value },
+      }))
+    }
+    placeholder="https://example.com/about"
+  />
+</div>
+
 
              <div>
               <label className="block text-sm font-medium mb-2 text-gray-700">Hero Image URL</label>
