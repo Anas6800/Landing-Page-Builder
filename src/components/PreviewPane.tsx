@@ -75,7 +75,7 @@ export default function PreviewPane() {
            
            {/* Secondary button functionality - will be re-enabled after deployment */}
            
-           {config.hero.secondaryCtaText && config.hero.secondaryCtaLink && (
+           {/* {config.hero.secondaryCtaText && config.hero.secondaryCtaLink && (
   <a
     href={config.hero.secondaryCtaLink}
     className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
@@ -88,7 +88,7 @@ export default function PreviewPane() {
   >
     <span className="relative z-10">{config.hero.secondaryCtaText}</span>
   </a>
-)}
+)} */}
           
          </div>
 

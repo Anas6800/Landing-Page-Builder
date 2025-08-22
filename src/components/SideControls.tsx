@@ -112,7 +112,7 @@ export default function Sidebar() {
 
             {/* Secondary button controls - will be re-enabled after deployment */}
 
-<div>
+{/* <div>
   <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Text</label>
   <input
     className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -140,7 +140,7 @@ export default function Sidebar() {
     }
     placeholder="https://example.com/about"
   />
-</div>
+</div> */}
 
 
              <div>

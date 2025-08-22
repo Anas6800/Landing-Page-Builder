@@ -6,12 +6,15 @@ export type BuilderState = {
   theme: "light" | "dark" | "gradient";
   font: "sans" | "serif" | "mono";
   layout: "centered" | "left-image" | "full-width";
-  hero: {
-    title: string;
-    subtitle: string;
-    ctaText: string;
-    ctaLink?: string;
-  };
+      hero: {
+      title: string;
+      subtitle: string;
+      ctaText: string;
+      ctaLink?: string;
+      secondaryCtaText?: string;
+      secondaryCtaLink?: string;
+      stats?: Array<{ value: string; label: string }>;
+    };
   sections: {
     about: boolean;
     services: boolean;
@@ -69,6 +72,13 @@ const initialState: BuilderState = {
     subtitle: "Built with Next.js + Tailwind",
     ctaText: "Get Started",
     ctaLink: "#",
+    secondaryCtaText: "",
+    secondaryCtaLink: "",
+    stats: [
+      { value: "10K+", label: "Happy Users" },
+      { value: "99%", label: "Satisfaction" },
+      { value: "24/7", label: "Support" },
+    ],
   },
   sections: {
     about: true,
@@ -88,7 +98,7 @@ const initialState: BuilderState = {
       subtitle: "We offer comprehensive digital solutions to help your business grow and succeed online.",
       items: [
         {
-          icon: "��",
+          icon: "🎨",
           title: "Web Design",
           description: "Beautiful, responsive websites that captivate your audience and drive conversions.",
           features: ["UI/UX Design", "Responsive Layout", "Brand Integration"]
