@@ -13,8 +13,16 @@ interface SavedConfig {
   createdAt: string;
 }
 
+// Extended type for migrated configs
+interface MigratedBuilderState extends BuilderState {
+  hero: BuilderState['hero'] & {
+    secondaryCtaText?: string;
+    secondaryCtaLink?: string;
+  };
+}
+
 export default function PreviewPage({ params }: { params: { id: string } }) {
-  const [config, setConfig] = useState<BuilderState | null>(null);
+  const [config, setConfig] = useState<MigratedBuilderState | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
