@@ -111,7 +111,7 @@ export default function Sidebar() {
              </div>
 
              {/* Secondary button controls - will be re-enabled after deployment */}
-             {/* 
+             
              <div>
                <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Text</label>
                <input
@@ -141,7 +141,7 @@ export default function Sidebar() {
                  placeholder="https://example.com/about"
                />
              </div>
-             */}
+            
 
              <div>
               <label className="block text-sm font-medium mb-2 text-gray-700">Hero Image URL</label>
