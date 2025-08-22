@@ -20,7 +20,18 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
   useEffect(() => {
     const savedConfigs = JSON.parse(localStorage.getItem("landingPageConfigs") || "[]");
     const foundConfig = savedConfigs.find((saved: SavedConfig) => saved.id === params.id);
-    if (foundConfig) setConfig(foundConfig.config);
+    if (foundConfig) {
+      // Ensure the config has the new secondary button properties
+      const migratedConfig = {
+        ...foundConfig.config,
+        hero: {
+          ...foundConfig.config.hero,
+          secondaryCtaText: foundConfig.config.hero.secondaryCtaText || "",
+          secondaryCtaLink: foundConfig.config.hero.secondaryCtaLink || "",
+        }
+      };
+      setConfig(migratedConfig);
+    }
     setLoading(false);
   }, [params.id]);
 
@@ -103,20 +114,20 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
              }`}></div>
            </a>
            
-           {config.hero.secondaryCtaText && config.hero.secondaryCtaLink && (
-             <a
-               href={config.hero.secondaryCtaLink}
-               className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
-                 config.theme === "light"
-                   ? "bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                   : config.theme === "dark"
-                   ? "bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
-                   : "bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600"
-               }`}
-             >
-               <span className="relative z-10">{config.hero.secondaryCtaText}</span>
-             </a>
-           )}
+                       {(config.hero.secondaryCtaText || "") && (config.hero.secondaryCtaLink || "") && (
+              <a
+                href={config.hero.secondaryCtaLink || "#"}
+                className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
+                  config.theme === "light"
+                    ? "bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
+                    : config.theme === "dark"
+                    ? "bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
+                    : "bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600"
+                }`}
+              >
+                <span className="relative z-10">{config.hero.secondaryCtaText || ""}</span>
+              </a>
+            )}
          </div>
 
 
