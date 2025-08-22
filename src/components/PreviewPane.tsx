@@ -73,6 +73,8 @@ export default function PreviewPane() {
              }`}></div>
            </a>
            
+           {/* Secondary button functionality - will be re-enabled after deployment */}
+           {/* 
            {config.hero.secondaryCtaText && config.hero.secondaryCtaLink && (
              <a
                href={config.hero.secondaryCtaLink}
@@ -87,6 +89,7 @@ export default function PreviewPane() {
                <span className="relative z-10">{config.hero.secondaryCtaText}</span>
              </a>
            )}
+           */}
          </div>
 
         {/* Stats */}
