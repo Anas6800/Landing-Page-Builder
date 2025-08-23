@@ -30,101 +30,103 @@ export default function ContactSection({ config }: ContactSectionProps) {
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-8 md:gap-12">
+      <div className={`grid ${finalConfig.content?.contact?.showForm !== false ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} gap-8 md:gap-12`}>
         {/* Contact Form */}
-        <div className={`p-6 md:p-8 rounded-2xl ${
-          finalConfig.theme === "light"
-            ? "bg-white shadow-lg border border-gray-100"
-            : "bg-gray-800 shadow-lg border border-gray-700"
-        }`}>
-          <h3 className={`text-2xl font-bold mb-6 ${
-            finalConfig.theme === "light" ? "text-gray-900" : "text-white"
+        {finalConfig.content?.contact?.showForm !== false && (
+          <div className={`p-6 md:p-8 rounded-2xl ${
+            finalConfig.theme === "light"
+              ? "bg-white shadow-lg border border-gray-100"
+              : "bg-gray-800 shadow-lg border border-gray-700"
           }`}>
-            Send us a message
-          </h3>
-          
-          <form className="space-y-6">
-            <div className="grid md:grid-cols-2 gap-6">
+            <h3 className={`text-2xl font-bold mb-6 ${
+              finalConfig.theme === "light" ? "text-gray-900" : "text-white"
+            }`}>
+              Send us a message
+            </h3>
+            
+            <form className="space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${
+                    finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
+                  }`}>
+                    First Name
+                  </label>
+                  <input
+                    type="text"
+                    className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                      finalConfig.theme === "light"
+                        ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
+                        : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
+                    }`}
+                    placeholder="John"
+                  />
+                </div>
+                <div>
+                  <label className={`block text-sm font-medium mb-2 ${
+                    finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
+                  }`}>
+                    Last Name
+                  </label>
+                  <input
+                    type="text"
+                    className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                      finalConfig.theme === "light"
+                        ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
+                        : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
+                    }`}
+                    placeholder="Doe"
+                  />
+                </div>
+              </div>
+              
               <div>
                 <label className={`block text-sm font-medium mb-2 ${
                   finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
                 }`}>
-                  First Name
+                  Email Address
                 </label>
                 <input
-                  type="text"
+                  type="email"
                   className={`w-full px-4 py-3 rounded-lg border transition-colors ${
                     finalConfig.theme === "light"
                       ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
                       : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
                   }`}
-                  placeholder="John"
+                  placeholder="john@example.com"
                 />
               </div>
+              
               <div>
                 <label className={`block text-sm font-medium mb-2 ${
                   finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
                 }`}>
-                  Last Name
+                  Message
                 </label>
-                <input
-                  type="text"
-                  className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+                <textarea
+                  rows={4}
+                  className={`w-full px-4 py-3 rounded-lg border transition-colors resize-none ${
                     finalConfig.theme === "light"
                       ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
                       : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
                   }`}
-                  placeholder="Doe"
-                />
+                  placeholder="Tell us about your project..."
+                ></textarea>
               </div>
-            </div>
-            
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
-              }`}>
-                Email Address
-              </label>
-              <input
-                type="email"
-                className={`w-full px-4 py-3 rounded-lg border transition-colors ${
+              
+              <button
+                type="submit"
+                className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-200 hover:scale-105 ${
                   finalConfig.theme === "light"
-                    ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
-                    : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
+                    ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg"
+                    : "bg-blue-500 text-white hover:bg-blue-600 shadow-lg"
                 }`}
-                placeholder="john@example.com"
-              />
-            </div>
-            
-            <div>
-              <label className={`block text-sm font-medium mb-2 ${
-                finalConfig.theme === "light" ? "text-gray-700" : "text-gray-300"
-              }`}>
-                Message
-              </label>
-              <textarea
-                rows={4}
-                className={`w-full px-4 py-3 rounded-lg border transition-colors resize-none ${
-                  finalConfig.theme === "light"
-                    ? "border-gray-300 focus:border-blue-500 bg-white text-gray-900"
-                    : "border-gray-600 focus:border-blue-400 bg-gray-700 text-white"
-                }`}
-                placeholder="Tell us about your project..."
-              ></textarea>
-            </div>
-            
-            <button
-              type="submit"
-              className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-200 hover:scale-105 ${
-                finalConfig.theme === "light"
-                  ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg"
-                  : "bg-blue-500 text-white hover:bg-blue-600 shadow-lg"
-              }`}
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        )}
 
         {/* Contact Info */}
         <div className="space-y-8">

@@ -11,8 +11,6 @@ export type BuilderState = {
       subtitle: string;
       ctaText: string;
       ctaLink?: string;
-      secondaryCtaText?: string;
-      secondaryCtaLink?: string;
       stats?: Array<{ value: string; label: string }>;
     };
   sections: {
@@ -55,6 +53,7 @@ export type BuilderState = {
       phone?: string;
       address?: string;
       hours?: string;
+      showForm?: boolean;
     };
   };
   images: {
@@ -72,8 +71,6 @@ const initialState: BuilderState = {
     subtitle: "Built with Next.js + Tailwind",
     ctaText: "Get Started",
     ctaLink: "#",
-    secondaryCtaText: "",
-    secondaryCtaLink: "",
     stats: [
       { value: "10K+", label: "Happy Users" },
       { value: "99%", label: "Satisfaction" },
@@ -154,6 +151,7 @@ const initialState: BuilderState = {
       phone: "+1 (555) 123-4567",
       address: "123 Business Street, City, Country",
       hours: "Monday - Friday: 9:00 AM - 6:00 PM",
+      showForm: true,
     },
   },
   images: {

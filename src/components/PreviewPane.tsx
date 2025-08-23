@@ -35,7 +35,20 @@ export default function PreviewPane() {
     const renderHeroContent = () => {
     const content = (
       <>
-
+        {/* Logo */}
+        {config.images.logo && (
+          <div className="mb-8 flex justify-center">
+            <img
+              src={config.images.logo} 
+              alt="Logo" 
+              className="h-12 md:h-16 lg:h-20 object-contain"
+              onError={(e) => {
+                // Hide the image if it fails to load
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        )}
 
         {/* Main Title */}
         <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${
@@ -54,7 +67,9 @@ export default function PreviewPane() {
                  {/* CTA Buttons */}
          <div className="flex flex-col sm:flex-row gap-4 items-center">
            <a
-             href={config.hero.ctaLink}
+             href={config.hero.ctaLink || "#"}
+             target={config.hero.ctaLink && (config.hero.ctaLink.startsWith('http') || config.hero.ctaLink.startsWith('mailto:')) ? "_blank" : "_self"}
+             rel={config.hero.ctaLink && (config.hero.ctaLink.startsWith('http') || config.hero.ctaLink.startsWith('mailto:')) ? "noopener noreferrer" : undefined}
              className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
                config.theme === "light"
                  ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl"
@@ -72,24 +87,6 @@ export default function PreviewPane() {
                  : "bg-gradient-to-r from-gray-50 to-gray-100"
              }`}></div>
            </a>
-           
-           {/* Secondary button functionality - will be re-enabled after deployment */}
-           
-           {/* {config.hero.secondaryCtaText && config.hero.secondaryCtaLink && (
-  <a
-    href={config.hero.secondaryCtaLink}
-    className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
-      config.theme === "light"
-        ? "bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-        : config.theme === "dark"
-        ? "bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
-        : "bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600"
-    }`}
-  >
-    <span className="relative z-10">{config.hero.secondaryCtaText}</span>
-  </a>
-)} */}
-          
          </div>
 
         {/* Stats */}
@@ -143,12 +140,12 @@ export default function PreviewPane() {
             </div>
           </div>
         );
-      case "full-width":
-        return (
-          <div className="w-full text-center max-w-6xl mx-auto">
-            {content}
-          </div>
-        );
+     case "full-width":
+  return (
+    <div className="flex flex-col items-center justify-center w-full text-center">
+      {content}
+    </div>
+  );
       default:
         return (
           <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">

@@ -15,33 +15,27 @@ interface SavedConfig {
 
 // Extended type for migrated configs
 interface MigratedBuilderState extends BuilderState {
-  hero: BuilderState['hero'] & {
-    secondaryCtaText?: string;
-    secondaryCtaLink?: string;
-  };
+  hero: BuilderState['hero'];
 }
 
-export default function PreviewPage({ params }: { params: { id: string } }) {
+export default function PreviewPage({ params }: { params: Promise<{ id: string }> }) {
   const [config, setConfig] = useState<MigratedBuilderState | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const savedConfigs = JSON.parse(localStorage.getItem("landingPageConfigs") || "[]");
-    const foundConfig = savedConfigs.find((saved: SavedConfig) => saved.id === params.id);
-    if (foundConfig) {
-      // Ensure the config has the new secondary button properties
-      const migratedConfig = {
-        ...foundConfig.config,
-        hero: {
-          ...foundConfig.config.hero,
-          secondaryCtaText: foundConfig.config.hero.secondaryCtaText || "",
-          secondaryCtaLink: foundConfig.config.hero.secondaryCtaLink || "",
-        }
-      };
-      setConfig(migratedConfig);
-    }
-    setLoading(false);
-  }, [params.id]);
+    const loadParams = async () => {
+      const resolvedParams = await params;
+      
+      const savedConfigs = JSON.parse(localStorage.getItem("landingPageConfigs") || "[]");
+      const foundConfig = savedConfigs.find((saved: SavedConfig) => saved.id === resolvedParams.id);
+      if (foundConfig) {
+        setConfig(foundConfig.config);
+      }
+      setLoading(false);
+    };
+    
+    loadParams();
+  }, [params]);
 
   if (loading)
     return (
@@ -88,7 +82,20 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
   const renderHeroContent = () => {
     const content = (
       <>
-
+        {/* Logo */}
+        {config.images.logo && (
+          <div className="mb-8 flex justify-center">
+            <img 
+              src={config.images.logo} 
+              alt="Logo" 
+              className="h-12 md:h-16 lg:h-20 object-contain"
+              onError={(e) => {
+                // Hide the image if it fails to load
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          </div>
+        )}
 
         {/* Title */}
         <h1 className={`text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight ${getTextColor("text-gray-900", "text-white")}`}>
@@ -103,7 +110,9 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
                  {/* CTA Buttons */}
          <div className="flex flex-col sm:flex-row gap-4 items-center">
            <a
-             href={config.hero.ctaLink}
+             href={config.hero.ctaLink || "#"}
+             target={config.hero.ctaLink && (config.hero.ctaLink.startsWith('http') || config.hero.ctaLink.startsWith('mailto:')) ? "_blank" : "_self"}
+             rel={config.hero.ctaLink && (config.hero.ctaLink.startsWith('http') || config.hero.ctaLink.startsWith('mailto:')) ? "noopener noreferrer" : undefined}
              className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
                config.theme === "light"
                  ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow-lg hover:shadow-xl"
@@ -121,21 +130,6 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
                  : "bg-gradient-to-r from-gray-50 to-gray-100"
              }`}></div>
            </a>
-           
-                       {(config.hero.secondaryCtaText || "") && (config.hero.secondaryCtaLink || "") && (
-              <a
-                href={config.hero.secondaryCtaLink || "#"}
-                className={`group relative px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:scale-105 ${
-                  config.theme === "light"
-                    ? "bg-transparent border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white"
-                    : config.theme === "dark"
-                    ? "bg-transparent border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-gray-900"
-                    : "bg-transparent border-2 border-white text-white hover:bg-white hover:text-purple-600"
-                }`}
-              >
-                <span className="relative z-10">{config.hero.secondaryCtaText || ""}</span>
-              </a>
-            )}
          </div>
 
 
@@ -172,7 +166,11 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
           </div>
         );
       case "full-width":
-        return <div className="w-full text-center">{content}</div>;
+        return (
+          <div className="flex flex-col items-center justify-center w-full text-center">
+            {content}
+          </div>
+        );
       default:
         return <div className="flex flex-col items-center justify-center text-center">{content}</div>;
     }
@@ -191,7 +189,7 @@ export default function PreviewPage({ params }: { params: { id: string } }) {
             <div className={`absolute -bottom-40 -left-40 w-80 h-80 rounded-full blur-3xl opacity-20 ${getBgColor("bg-purple-400", "bg-purple-600")}`}></div>
           </div>
 
-          <div className="relative z-10">{renderHeroContent()}</div>
+          <div className="relative">{renderHeroContent()}</div>
         </div>
 
         {/* Sections */}

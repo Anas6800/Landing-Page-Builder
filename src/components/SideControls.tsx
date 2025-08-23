@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useBuilder } from "@/context/BuilderContext";
 import ExportModal from "./ExportModal";
+import Link from "next/link";
 
 interface CollapsibleSectionProps {
   title: string;
@@ -17,15 +18,15 @@ function CollapsibleSection({ title, children, defaultOpen = false }: Collapsibl
     <div className="border border-gray-200 rounded-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-4 py-3 bg-gray-50 hover:bg-gray-100 flex items-center justify-between text-left font-medium transition-colors"
+        className="w-full px-3 lg:px-4 py-3 lg:py-3 bg-gray-50 hover:bg-gray-100 flex items-center justify-between text-left font-medium transition-colors"
       >
-        <span>{title}</span>
+        <span className="text-sm lg:text-base">{title}</span>
         <span className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
           ▼
         </span>
       </button>
       {isOpen && (
-        <div className="p-4 space-y-4 bg-white">
+        <div className="p-3 lg:p-4 space-y-3 lg:space-y-4 bg-white">
           {children}
         </div>
       )}
@@ -38,21 +39,21 @@ export default function Sidebar() {
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   return (
-    <div className="w-96 bg-gray-50 h-screen overflow-y-auto border-r border-gray-200 sticky top-0">
-      <div className="p-6 space-y-6">
-        {/* Header */}
-        <div className="text-center pb-4 border-b border-gray-200">
+    <div className="w-full lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200">
+      <div className="p-4 lg:p-6 space-y-4 lg:space-y-6">
+        {/* Header - Hidden on mobile since we have a mobile header */}
+        <div className="hidden lg:block text-center pb-4 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800">🎨 Landing Page Builder</h2>
           <p className="text-sm text-gray-600 mt-1">Customize every aspect of your page</p>
         </div>
 
         {/* Hero Section */}
         <CollapsibleSection title="🚀 Hero Section" defaultOpen={true}>
-          <div className="space-y-4">
+          <div className="space-y-3 lg:space-y-4">
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-700">Hero Title</label>
               <input
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={config.hero.title}
                 onChange={(e) =>
                   setConfig((prev) => ({
@@ -67,7 +68,7 @@ export default function Sidebar() {
             <div>
               <label className="block text-sm font-medium mb-2 text-gray-700">Hero Subtitle</label>
               <textarea
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={config.hero.subtitle}
                 onChange={(e) =>
                   setConfig((prev) => ({
@@ -83,7 +84,7 @@ export default function Sidebar() {
                          <div>
                <label className="block text-sm font-medium mb-2 text-gray-700">Primary Button Text</label>
                <input
-                 className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                 className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                  value={config.hero.ctaText}
                  onChange={(e) =>
                    setConfig((prev) => ({
@@ -98,7 +99,7 @@ export default function Sidebar() {
              <div>
                <label className="block text-sm font-medium mb-2 text-gray-700">Primary Button Link</label>
                <input
-                 className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                 className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                  value={config.hero.ctaLink}
                  onChange={(e) =>
                    setConfig((prev) => ({
@@ -106,42 +107,10 @@ export default function Sidebar() {
                      hero: { ...prev.hero, ctaLink: e.target.value },
                    }))
                  }
-                 placeholder="https://example.com"
+                 placeholder="https://youtube.com or mailto:hello@example.com"
                />
+               <p className="text-xs text-gray-500 mt-1">External links (starting with http) will open in a new tab</p>
              </div>
-
-            {/* Secondary button controls - will be re-enabled after deployment */}
-
-{/* <div>
-  <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Text</label>
-  <input
-    className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    value={config.hero.secondaryCtaText || ""}
-    onChange={(e) =>
-      setConfig((prev) => ({
-        ...prev,
-        hero: { ...prev.hero, secondaryCtaText: e.target.value },
-      }))
-    }
-    placeholder="Learn More"
-  />
-</div>
-
-<div>
-  <label className="block text-sm font-medium mb-2 text-gray-700">Secondary Button Link</label>
-  <input
-    className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-    value={config.hero.secondaryCtaLink || ""}
-    onChange={(e) =>
-      setConfig((prev) => ({
-        ...prev,
-        hero: { ...prev.hero, secondaryCtaLink: e.target.value },
-      }))
-    }
-    placeholder="https://example.com/about"
-  />
-</div> */}
-
 
              <div>
               <label className="block text-sm font-medium mb-2 text-gray-700">Hero Image URL</label>
@@ -189,7 +158,7 @@ export default function Sidebar() {
                 className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="centered">Centered Hero</option>
-                <option value="left-image">Left Image + Right Text</option>
+                <option value="left-image">Left Text + Right Image</option>
                 <option value="full-width">Full-width Banner</option>
               </select>
             </div>
@@ -730,6 +699,30 @@ export default function Sidebar() {
                 />
               </div>
 
+              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                <div>
+                  <div className="font-medium text-gray-800">Contact Form</div>
+                  <div className="text-sm text-gray-600">Show &ldquo;Send us a message&rdquo; form</div>
+                </div>
+                <input
+                  type="checkbox"
+                  checked={config.content?.contact?.showForm !== false}
+                  onChange={(e) =>
+                    setConfig((prev) => ({
+                      ...prev,
+                      content: { 
+                        ...prev.content, 
+                        contact: { 
+                          ...prev.content?.contact, 
+                          showForm: e.target.checked 
+                        } 
+                      }
+                    }))
+                  }
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                />
+              </div>
+
               <div>
                 <label className="block text-sm font-medium mb-2 text-gray-700">Email Address</label>
                 <input
@@ -840,11 +833,11 @@ export default function Sidebar() {
         </CollapsibleSection>
 
         {/* Export Section */}
-        <div className="pt-6 border-t border-gray-200">
+        <div className="pt-4 lg:pt-6 border-t border-gray-200">
           <div className="space-y-3">
             <button
               onClick={() => setIsExportModalOpen(true)}
-              className="w-full py-4 px-6 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="w-full py-3 lg:py-4 px-4 lg:px-6 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl text-sm lg:text-base"
             >
               🚀 Export & Save Landing Page
             </button>
@@ -861,7 +854,14 @@ export default function Sidebar() {
           isOpen={isExportModalOpen} 
           onClose={() => setIsExportModalOpen(false)} 
         />
-      </div>
+         <button
+              onClick={() => window.location.href = "/"}
+              className="w-full py-3 lg:py-4 px-4 lg:px-6 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl font-semibold hover:from-green-700 hover:to-green-800 transition-all duration-200 shadow-lg hover:shadow-xl text-sm lg:text-base"
+            >
+              Back to Home
+            </button>
     </div>
+      </div>
+     
   );
 }
