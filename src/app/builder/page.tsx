@@ -20,16 +20,6 @@ export default function BuilderPage() {
         </button>
       </div>
 
-      {/* Sidebar - Hidden on mobile by default, always visible on desktop */}
-      <div className={`${isSidebarOpen ? 'block' : 'hidden'} lg:block lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200`}>
-        <Sidebar />
-      </div>
-
-      {/* Preview Area */}
-      <div className="flex-1 h-full overflow-y-auto">
-        <PreviewPane />
-      </div>
-
       {/* Mobile Overlay */}
       {isSidebarOpen && (
         <div 
@@ -37,6 +27,16 @@ export default function BuilderPage() {
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
+
+      {/* Sidebar - Hidden on mobile by default, always visible on desktop */}
+      <div className={`${isSidebarOpen ? 'fixed lg:relative' : 'hidden'} lg:block lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200 z-50 lg:z-auto`}>
+        <Sidebar />
+      </div>
+
+      {/* Preview Area */}
+      <div className="flex-1 h-full overflow-y-auto">
+        <PreviewPane />
+      </div>
     </div>
   );
 }
