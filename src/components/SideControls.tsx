@@ -18,15 +18,15 @@ function CollapsibleSection({ title, children, defaultOpen = false }: Collapsibl
     <div className="border border-gray-200 rounded-lg overflow-hidden">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full px-3 lg:px-4 py-3 lg:py-3 bg-gray-50 hover:bg-gray-100 flex items-center justify-between text-left font-medium transition-colors"
+        className="w-full px-2 lg:px-4 py-2 lg:py-3 bg-gray-50 hover:bg-gray-100 flex items-center justify-between text-left font-medium transition-colors"
       >
-        <span className="text-sm lg:text-base">{title}</span>
+        <span className="text-xs lg:text-base">{title}</span>
         <span className={`transform transition-transform ${isOpen ? 'rotate-180' : ''}`}>
           ▼
         </span>
       </button>
       {isOpen && (
-        <div className="p-3 lg:p-4 space-y-3 lg:space-y-4 bg-white">
+        <div className="p-2 lg:p-4 space-y-2 lg:space-y-4 bg-white">
           {children}
         </div>
       )}
@@ -39,8 +39,8 @@ export default function Sidebar() {
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   return (
-    <div className="w-full lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200">
-      <div className="p-4 lg:p-6 space-y-4 lg:space-y-6">
+    <div className="w-full bg-gray-50 h-full overflow-y-auto border-r border-gray-200">
+      <div className="p-3 lg:p-6 space-y-3 lg:space-y-6">
         {/* Header - Hidden on mobile since we have a mobile header */}
         <div className="hidden lg:block text-center pb-4 border-b border-gray-200">
           <h2 className="text-2xl font-bold text-gray-800">🎨 Landing Page Builder</h2>
@@ -49,11 +49,11 @@ export default function Sidebar() {
 
         {/* Hero Section */}
         <CollapsibleSection title="🚀 Hero Section" defaultOpen={true}>
-          <div className="space-y-3 lg:space-y-4">
+          <div className="space-y-2 lg:space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Hero Title</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Hero Title</label>
               <input
-                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={config.hero.title}
                 onChange={(e) =>
                   setConfig((prev) => ({
@@ -66,9 +66,9 @@ export default function Sidebar() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Hero Subtitle</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Hero Subtitle</label>
               <textarea
-                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={config.hero.subtitle}
                 onChange={(e) =>
                   setConfig((prev) => ({
@@ -77,7 +77,7 @@ export default function Sidebar() {
                   }))
                 }
                 placeholder="Enter your subtitle or description"
-                rows={3}
+                rows={2}
               />
             </div>
 
