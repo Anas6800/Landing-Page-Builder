@@ -81,66 +81,66 @@ export default function Sidebar() {
               />
             </div>
 
-                         <div>
-               <label className="block text-sm font-medium mb-2 text-gray-700">Primary Button Text</label>
+                 <div>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Primary Button Text</label>
+                <input
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={config.hero.ctaText}
+                  onChange={(e) =>
+                    setConfig((prev) => ({
+                      ...prev,
+                      hero: { ...prev.hero, ctaText: e.target.value },
+                    }))
+                  }
+                  placeholder="Get Started"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Primary Button Link</label>
+                <input
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  value={config.hero.ctaLink}
+                  onChange={(e) =>
+                    setConfig((prev) => ({
+                      ...prev,
+                      hero: { ...prev.hero, ctaLink: e.target.value },
+                    }))
+                  }
+                  placeholder="https://youtube.com or mailto:hello@example.com"
+                />
+                <p className="text-xs text-gray-500 mt-1">External links (starting with http) will open in a new tab</p>
+              </div>
+
+              <div>
+               <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Hero Image URL</label>
                <input
-                 className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                 value={config.hero.ctaText}
+                 className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                 value={config.images.heroImage}
                  onChange={(e) =>
                    setConfig((prev) => ({
                      ...prev,
-                     hero: { ...prev.hero, ctaText: e.target.value },
+                     images: { ...prev.images, heroImage: e.target.value },
                    }))
                  }
-                 placeholder="Get Started"
+                 placeholder="https://example.com/image.jpg"
                />
+               <p className="text-xs text-gray-500 mt-1">Leave empty to use placeholder</p>
              </div>
-
-             <div>
-               <label className="block text-sm font-medium mb-2 text-gray-700">Primary Button Link</label>
-               <input
-                 className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                 value={config.hero.ctaLink}
-                 onChange={(e) =>
-                   setConfig((prev) => ({
-                     ...prev,
-                     hero: { ...prev.hero, ctaLink: e.target.value },
-                   }))
-                 }
-                 placeholder="https://youtube.com or mailto:hello@example.com"
-               />
-               <p className="text-xs text-gray-500 mt-1">External links (starting with http) will open in a new tab</p>
-             </div>
-
-             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Hero Image URL</label>
-              <input
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                value={config.images.heroImage}
-                onChange={(e) =>
-                  setConfig((prev) => ({
-                    ...prev,
-                    images: { ...prev.images, heroImage: e.target.value },
-                  }))
-                }
-                placeholder="https://example.com/image.jpg"
-              />
-              <p className="text-xs text-gray-500 mt-1">Leave empty to use placeholder</p>
-            </div>
           </div>
         </CollapsibleSection>
 
         {/* Design & Layout */}
         <CollapsibleSection title="🎨 Design & Layout">
-          <div className="space-y-4">
+          <div className="space-y-2 lg:space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Theme</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Theme</label>
               <select
                 value={config.theme}
                 onChange={(e) =>
                   setConfig((prev) => ({ ...prev, theme: e.target.value as "light" | "dark" | "gradient" }))
                 }
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="light">Light Theme</option>
                 <option value="dark">Dark Theme</option>
@@ -149,13 +149,13 @@ export default function Sidebar() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Layout Style</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Layout Style</label>
               <select
                 value={config.layout}
                 onChange={(e) =>
                   setConfig((prev) => ({ ...prev, layout: e.target.value as "centered" | "left-image" | "full-width" }))
                 }
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="centered">Centered Hero</option>
                 <option value="left-image">Left Text + Right Image</option>
@@ -164,7 +164,7 @@ export default function Sidebar() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Font Family</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Font Family</label>
               <select
                 value={config.font}
                 onChange={(e) =>
@@ -173,7 +173,7 @@ export default function Sidebar() {
                     font: e.target.value as "sans" | "serif" | "mono",
                   }))
                 }
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               >
                 <option value="sans">Sans Serif (Modern)</option>
                 <option value="serif">Serif (Classic)</option>
@@ -185,11 +185,11 @@ export default function Sidebar() {
 
         {/* Content Sections */}
         <CollapsibleSection title="📄 Content Sections">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+          <div className="space-y-2 lg:space-y-3">
+            <div className="flex items-center justify-between p-2 lg:p-3 bg-gray-50 rounded-lg">
               <div>
-                <div className="font-medium text-gray-800">About Section</div>
-                <div className="text-sm text-gray-600">Company information and stats</div>
+                <div className="font-medium text-xs lg:text-sm text-gray-800">About Section</div>
+                <div className="text-xs lg:text-sm text-gray-600">Company information and stats</div>
               </div>
               <input
                 type="checkbox"
@@ -204,10 +204,10 @@ export default function Sidebar() {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 lg:p-3 bg-gray-50 rounded-lg">
               <div>
-                <div className="font-medium text-gray-800">Services Section</div>
-                <div className="text-sm text-gray-600">What you offer to clients</div>
+                <div className="font-medium text-xs lg:text-sm text-gray-800">Services Section</div>
+                <div className="text-xs lg:text-sm text-gray-600">What you offer to clients</div>
               </div>
               <input
                 type="checkbox"
@@ -222,10 +222,10 @@ export default function Sidebar() {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 lg:p-3 bg-gray-50 rounded-lg">
               <div>
-                <div className="font-medium text-gray-800">Testimonials Section</div>
-                <div className="text-sm text-gray-600">Customer reviews and feedback</div>
+                <div className="font-medium text-xs lg:text-sm text-gray-800">Testimonials Section</div>
+                <div className="text-xs lg:text-sm text-gray-600">Customer reviews and feedback</div>
               </div>
               <input
                 type="checkbox"
@@ -240,10 +240,10 @@ export default function Sidebar() {
               />
             </div>
 
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 lg:p-3 bg-gray-50 rounded-lg">
               <div>
-                <div className="font-medium text-gray-800">Contact Section</div>
-                <div className="text-sm text-gray-600">Contact form and information</div>
+                <div className="font-medium text-xs lg:text-sm text-gray-800">Contact Section</div>
+                <div className="text-xs lg:text-sm text-gray-600">Contact form and information</div>
               </div>
               <input
                 type="checkbox"
@@ -262,11 +262,11 @@ export default function Sidebar() {
 
         {config.sections.about && (
   <CollapsibleSection title="📝 About Section">
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Title</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Title</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           value={config.content?.about?.title || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -282,9 +282,9 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Subtitle</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Subtitle</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           value={config.content?.about?.subtitle || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -300,10 +300,10 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Description</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Description</label>
         <textarea
-          rows={4}
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          rows={2}
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           value={config.content?.about?.description || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -319,8 +319,8 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Stats</label>
-        <div className="space-y-3">
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Stats</label>
+        <div className="space-y-2 lg:space-y-3">
           {(config.content?.about?.stats || [
             { number: "500+", label: "Projects Completed" },
             { number: "50+", label: "Happy Clients" },
@@ -329,7 +329,7 @@ export default function Sidebar() {
           ]).map((stat, index) => (
             <div key={index} className="flex gap-2">
               <input
-                className="flex-1 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-1 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={stat.number}
                 onChange={(e) => {
                   const newStats = [...(config.content?.about?.stats || [
@@ -350,7 +350,7 @@ export default function Sidebar() {
                 placeholder="500+"
               />
               <input
-                className="flex-1 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="flex-1 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={stat.label}
                 onChange={(e) => {
                   const newStats = [...(config.content?.about?.stats || [
@@ -381,11 +381,11 @@ export default function Sidebar() {
 {/* Services Section Content */}
 {config.sections.services && (
   <CollapsibleSection title="⚡ Services Section Content">
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Section Title</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Title</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm"
           value={config.content?.services?.title || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -404,9 +404,9 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Section Subtitle</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Subtitle</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm"
           value={config.content?.services?.subtitle || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -425,13 +425,13 @@ export default function Sidebar() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Service Cards</label>
-        <div className="space-y-4">
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Service Cards</label>
+        <div className="space-y-2 lg:space-y-4">
           {(config.content?.services?.items || []).map((service, index) => (
-            <div key={index} className="p-3 border border-gray-200 rounded-lg space-y-3">
+            <div key={index} className="p-2 lg:p-3 border border-gray-200 rounded-lg space-y-2 lg:space-y-3">
               <div className="flex gap-2">
                 <input
-                  className="w-16 border border-gray-300 rounded-lg p-2 text-sm"
+                  className="w-12 lg:w-16 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm"
                   value={service.icon}
                   onChange={(e) => {
                     const newItems = [...(config.content?.services?.items || [])];
@@ -450,7 +450,7 @@ export default function Sidebar() {
                   placeholder="🎨"
                 />
                 <input
-                  className="flex-1 border border-gray-300 rounded-lg p-2 text-sm"
+                  className="flex-1 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm"
                   value={service.title}
                   onChange={(e) => {
                     const newItems = [...(config.content?.services?.items || [])];
@@ -470,7 +470,7 @@ export default function Sidebar() {
                 />
               </div>
               <textarea
-                className="w-full border border-gray-300 rounded-lg p-2 text-sm"
+                className="w-full border border-gray-300 rounded-lg p-2 text-xs lg:text-sm"
                 value={service.description}
                 onChange={(e) => {
                   const newItems = [...(config.content?.services?.items || [])];
@@ -490,11 +490,11 @@ export default function Sidebar() {
                 rows={2}
               />
               <div>
-                <label className="block text-sm font-medium mb-1">Features</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1">Features</label>
                 {service.features.map((feature, fIndex) => (
                   <input
                     key={fIndex}
-                    className="w-full border border-gray-300 rounded-lg p-2 text-sm mb-1"
+                    className="w-full border border-gray-300 rounded-lg p-2 text-xs lg:text-sm mb-1"
                     value={feature}
                     onChange={(e) => {
                       const newItems = [...(config.content?.services?.items || [])];
@@ -527,12 +527,12 @@ export default function Sidebar() {
         
 {config.sections.testimonials && (
   <CollapsibleSection title="💬 Testimonials Section Content">
-    <div className="space-y-4">
+    <div className="space-y-2 lg:space-y-4">
       {/* Title */}
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Section Title</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Title</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           value={config.content?.testimonials?.title || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -552,9 +552,9 @@ export default function Sidebar() {
 
       {/* Subtitle */}
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Section Subtitle</label>
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Subtitle</label>
         <input
-          className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           value={config.content?.testimonials?.subtitle || ""}
           onChange={(e) =>
             setConfig((prev) => ({
@@ -574,13 +574,13 @@ export default function Sidebar() {
 
       {/* Testimonial Items */}
       <div>
-        <label className="block text-sm font-medium mb-2 text-gray-700">Testimonial Items</label>
-        <div className="space-y-4">
+        <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Testimonial Items</label>
+        <div className="space-y-2 lg:space-y-4">
           {config.content?.testimonials?.items?.map((item, index) => (
-            <div key={index} className="p-3 border border-gray-200 rounded-lg space-y-3">
+            <div key={index} className="p-2 lg:p-3 border border-gray-200 rounded-lg space-y-2 lg:space-y-3">
               <div className="flex gap-2">
                 <input
-                  className="w-16 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-12 lg:w-16 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={item.avatar}
                   onChange={(e) => {
                     const newItems = [...(config.content?.testimonials?.items || [])];
@@ -596,7 +596,7 @@ export default function Sidebar() {
                   placeholder="👩‍💼"
                 />
                 <input
-                  className="flex-1 border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={item.author}
                   onChange={(e) => {
                     const newItems = [...(config.content?.testimonials?.items || [])];
@@ -613,7 +613,7 @@ export default function Sidebar() {
                 />
               </div>
               <input
-                className="w-full border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={item.position}
                 onChange={(e) => {
                   const newItems = [...(config.content?.testimonials?.items || [])];
@@ -629,7 +629,7 @@ export default function Sidebar() {
                 placeholder="Position / Company"
               />
               <textarea
-                className="w-full border border-gray-300 rounded-lg p-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={item.quote}
                 onChange={(e) => {
                   const newItems = [...(config.content?.testimonials?.items || [])];
@@ -656,11 +656,11 @@ export default function Sidebar() {
         {/* Contact Section Content */}
         {config.sections.contact && (
           <CollapsibleSection title="📞 Contact Section Content">
-            <div className="space-y-4">
+            <div className="space-y-2 lg:space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Section Title</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Title</label>
                 <input
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.title || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -679,9 +679,9 @@ export default function Sidebar() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Section Subtitle</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Section Subtitle</label>
                 <input
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.subtitle || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -699,10 +699,10 @@ export default function Sidebar() {
                 />
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div className="flex items-center justify-between p-2 lg:p-3 bg-gray-50 rounded-lg">
                 <div>
-                  <div className="font-medium text-gray-800">Contact Form</div>
-                  <div className="text-sm text-gray-600">Show &ldquo;Send us a message&rdquo; form</div>
+                  <div className="font-medium text-xs lg:text-sm text-gray-800">Contact Form</div>
+                  <div className="text-xs lg:text-sm text-gray-600">Show &ldquo;Send us a message&rdquo; form</div>
                 </div>
                 <input
                   type="checkbox"
@@ -724,9 +724,9 @@ export default function Sidebar() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Email Address</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Email Address</label>
                 <input
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.email || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -745,9 +745,9 @@ export default function Sidebar() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Phone Number</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Phone Number</label>
                 <input
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.phone || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -766,9 +766,9 @@ export default function Sidebar() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Office Address</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Office Address</label>
                 <textarea
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.address || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -783,14 +783,14 @@ export default function Sidebar() {
                     }))
                   }
                   placeholder="123 Business Street..."
-                  rows={3}
+                  rows={2}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2 text-gray-700">Business Hours</label>
+                <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Business Hours</label>
                 <textarea
-                  className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                   value={config.content?.contact?.hours || ""}
                   onChange={(e) =>
                     setConfig((prev) => ({
@@ -805,7 +805,7 @@ export default function Sidebar() {
                     }))
                   }
                   placeholder="Monday - Friday: 9:00 AM - 6:00 PM..."
-                  rows={3}
+                  rows={2}
                 />
               </div>
             </div>
@@ -814,11 +814,11 @@ export default function Sidebar() {
 
         {/* Advanced Settings */}
         <CollapsibleSection title="⚙️ Advanced Settings">
-          <div className="space-y-4">
+          <div className="space-y-2 lg:space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2 text-gray-700">Logo URL (Optional)</label>
+              <label className="block text-xs lg:text-sm font-medium mb-1 lg:mb-2 text-gray-700">Logo URL (Optional)</label>
               <input
-                className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full border border-gray-300 rounded-lg p-2 lg:p-3 text-xs lg:text-sm focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 value={config.images.logo}
                 onChange={(e) =>
                   setConfig((prev) => ({
