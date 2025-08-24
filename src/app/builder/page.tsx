@@ -29,7 +29,7 @@ export default function BuilderPage() {
       )}
 
       {/* Sidebar - Hidden on mobile by default, always visible on desktop */}
-      <div className={`${isSidebarOpen ? 'fixed lg:relative' : 'hidden'} lg:block lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200 z-50 lg:z-auto`}>
+      <div className={`${isSidebarOpen ? 'fixed lg:relative' : 'hidden'} lg:block w-80 lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200 z-50 lg:z-auto left-0 top-0 lg:left-auto lg:top-auto`}>
         <Sidebar />
       </div>
 
