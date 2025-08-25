@@ -104,16 +104,6 @@ Then push to GitHub and connect your repo with Vercel.
 
 ---
 
-## 🤝 Contributing
-
-1. Fork this repo
-2. Create your feature branch (`git checkout -b feature/your-feature`)
-3. Commit changes (`git commit -m "Add some feature"`)
-4. Push to branch (`git push origin feature/your-feature`)
-5. Open a Pull Request
-
----
-
 ## 📄 License
 
 This project is licensed under the **MIT License**.
