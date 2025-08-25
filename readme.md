@@ -1,10 +1,10 @@
-##⚡ Landing Page Builder
+## ⚡ Landing Page Builder
 
 A customizable landing page generator built with **Next.js**, **TailwindCSS**, and **TypeScript**.
 Users can create landing pages by selecting themes, layouts, fonts, and customizing content such as hero sections, about, services, testimonials, and contact forms.
 
 
-##✨ Features
+## ✨ Features
 
 🎨 **Themes/Color Schemes** → Light, Dark, Gradient.
 📐 **Layouts** → Centered Hero, Left Image + Right Text, Full-width Banner.
@@ -25,7 +25,7 @@ Users can create landing pages by selecting themes, layouts, fonts, and customiz
 *Context API** (for global state management)
 
 
-##🚀 Getting Started
+## 🚀 Getting Started
 
  1️⃣ Clone the repo
 
