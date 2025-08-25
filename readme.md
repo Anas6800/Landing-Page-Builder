@@ -1,4 +1,4 @@
-<img width="1910" height="962" alt="image" src="https://github.com/user-attachments/assets/cd5b64e8-3233-405d-860d-7b57d42be690" />⚡ Landing Page Builder
+⚡ Landing Page Builder
 
 A customizable landing page generator built with **Next.js**, **TailwindCSS**, and **TypeScript**.
 Users can create landing pages by selecting themes, layouts, fonts, and customizing content such as hero sections, about, services, testimonials, and contact forms.
