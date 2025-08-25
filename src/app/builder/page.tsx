@@ -28,8 +28,21 @@ export default function BuilderPage() {
         />
       )}
 
-      {/* Sidebar - Hidden on mobile by default, always visible on desktop */}
-      <div className={`${isSidebarOpen ? 'fixed lg:relative' : 'hidden'} lg:block w-80 lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200 z-50 lg:z-auto left-0 top-0 lg:left-auto lg:top-auto`}>
+      {/* Desktop Toggle Button */}
+      <button
+        aria-label={isSidebarOpen ? "Hide sidebar" : "Show sidebar"}
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className={`hidden lg:flex fixed top-4 ${isSidebarOpen ? 'lg:left-[25rem]' : 'lg:left-4'} z-50 h-11 w-11 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 active:scale-95 transition-all duration-200`}
+      >
+        <span className="relative block w-5 h-4">
+          <span className={`absolute left-0 h-0.5 w-5 bg-white transition-all duration-300 ${isSidebarOpen ? 'top-2 rotate-45' : 'top-0 rotate-0'}`}></span>
+          <span className={`absolute left-0 h-0.5 w-5 bg-white transition-all duration-300 ${isSidebarOpen ? 'top-2 opacity-0' : 'top-2 opacity-100'}`}></span>
+          <span className={`absolute left-0 h-0.5 w-5 bg-white transition-all duration-300 ${isSidebarOpen ? 'top-2 -rotate-45' : 'top-4 rotate-0'}`}></span>
+        </span>
+      </button>
+
+      {/* Sidebar - collapsible on both mobile and desktop */}
+      <div className={`${isSidebarOpen ? 'fixed left-0 top-0 z-50 block lg:relative lg:block' : 'hidden lg:hidden'} w-80 lg:w-96 bg-gray-50 h-full overflow-y-auto border-r border-gray-200 lg:z-auto`}>
         <Sidebar />
       </div>
 
