@@ -87,13 +87,14 @@ src/
 
 
 **Generated Landing Page Example:**
-*(add screenshot here)*
+<img width="1920" height="995" alt="image" src="https://github.com/user-attachments/assets/44ce3f73-aaa9-49de-9a3e-134c8b9e26f1" />
+
 
 ---
 
 ## ⚙️ Deployment
 
-Deploy easily with **Vercel**:
+Deploy easily with **Vercel**
 
 ```bash
 npm run build
