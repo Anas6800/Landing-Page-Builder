@@ -1,10 +1,10 @@
-⚡ Landing Page Builder
+##⚡ Landing Page Builder
 
 A customizable landing page generator built with **Next.js**, **TailwindCSS**, and **TypeScript**.
 Users can create landing pages by selecting themes, layouts, fonts, and customizing content such as hero sections, about, services, testimonials, and contact forms.
 
 
-✨ Features
+##✨ Features
 
 🎨 **Themes/Color Schemes** → Light, Dark, Gradient.
 📐 **Layouts** → Centered Hero, Left Image + Right Text, Full-width Banner.
@@ -25,7 +25,7 @@ Users can create landing pages by selecting themes, layouts, fonts, and customiz
 *Context API** (for global state management)
 
 
-🚀 Getting Started
+##🚀 Getting Started
 
  1️⃣ Clone the repo
 
@@ -51,7 +51,7 @@ Your app will be available at: [http://localhost:3000](http://localhost:3000)
 
 ## 📂 Project Structure
 
-
+``
 landing-page-builder/
 src/
 ├── app/
@@ -78,7 +78,7 @@ src/
 │
 ├── utils/
 │ └── theme.ts # Theme utilities
-
+``
 
 📸 Screenshots
 
@@ -117,7 +117,3 @@ Then push to GitHub and connect your repo with Vercel.
 ## 📄 License
 
 This project is licensed under the **MIT License**.
-
----
-
-👉 Do you also want me to include a **"Future Enhancements"** section (like drag-and-drop, AI content generation, templates)?
